@@ -8,36 +8,42 @@ export class StorageService {
 
   /**
    * Save data to localStorage
+   * @param {string} key - Data key
+   * @param {any} data - Data to save
    */
-  save(k, d) {
+  save(key, data) {
     try {
-      const fk = `${this.storageKey}_${k}`;
-      localStorage.setItem(fk, JSON.stringify(d));
-    } catch (error) {
-      console.error('Failed to save to localStorage:', error);
+      const fk = `${this.storageKey}_${key}`;
+      localStorage.setItem(fk, JSON.stringify(data));
+    } catch (e) {
+      console.error('Failed to save to localStorage:', e);
     }
   }
 
   /**
    * Load data from localStorage
+   * @param {string} key - Data key
+   * @param {any} defaultValue - Fallback value
+   * @returns {any}
    */
   load(key, defaultValue = null) {
     try {
       const fullKey = `${this.storageKey}_${key}`;
       const item = localStorage.getItem(fullKey);
       return item ? JSON.parse(item) : defaultValue;
-    } catch (error) {
-      console.error('Failed to load from localStorage:', error);
+    } catch (e) {
+      console.error('Failed to load from localStorage:', e);
       return defaultValue;
     }
   }
 
   /**
    * Remove data from localStorage
+   * @param {string} key - Data key
    */
-  remove(k) {
+  remove(key) {
     try {
-      const fullK = `${this.storageKey}_${k}`;
+      const fullK = `${this.storageKey}_${key}`;
       localStorage.removeItem(fullK);
     } catch (e) {
       console.error('Failed to remove from localStorage:', e);
