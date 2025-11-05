@@ -2,8 +2,14 @@ import { LitElement, html, css } from 'lit';
 import './todo-item.js';
 
 /**
- * TodoList - Displays a list of todos
- */
+* TodoList – Renders a scrollable list of todos with empty state.
+*
+* @fires CustomEvent - No events (pure view)
+*
+* @attr {Array<Object>} todos - Array of todo objects from controller
+
+*/
+
 export class TodoList extends LitElement {
   static properties = {
     todos: { type: Array }
@@ -16,34 +22,34 @@ export class TodoList extends LitElement {
 
     .empty-state {
       text-align: center;
-      padding: 40px 20px;
+      padding: 2.5rem 1.25rem;
       color: white;
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     .empty-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     .list-container {
-      max-height: 500px;
+      max-height: 31.25rem;
       overflow-y: auto;
     }
 
     /* Custom scrollbar */
     .list-container::-webkit-scrollbar {
-      width: 8px;
+      width: .5rem;
     }
 
     .list-container::-webkit-scrollbar-track {
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
+      border-radius: .25rem;
     }
 
     .list-container::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
+      border-radius: .25rem;
     }
 
     .list-container::-webkit-scrollbar-thumb:hover {
@@ -56,6 +62,10 @@ export class TodoList extends LitElement {
     this.todos = [];
   }
 
+  /**
+   * Renders the todo list or empty state.
+   * @returns {import('lit').TemplateResult}
+   */
   render() {
     if (this.todos.length === 0) {
       return html`
