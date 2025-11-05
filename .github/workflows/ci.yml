@@ -35,6 +35,12 @@ jobs:
     - name: JSDoc Generation
       run: npm run docs
 
+    - name: Run unit tests
+      run: npm run test:unit
+
+    - name: Run E2E tests
+      run: npm run test:e2e
+
   build-check:
     runs-on: ubuntu-latest
     needs: test
