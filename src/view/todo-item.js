@@ -1,7 +1,11 @@
 import { LitElement, html, css } from 'lit';
 
 /**
- * TodoItem - Individual todo item component
+ * TodoItem – Single todo item component
+ * @prop {Todo} todo - The todo object
+ * @fires todo:toggle - When completion is toggled
+ * @fires todo:delete - When todo is deleted
+ * @fires todo:update - When todo text is updated
  */
 export class TodoItem extends LitElement {
   static properties = {
@@ -18,28 +22,28 @@ export class TodoItem extends LitElement {
     .todo-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 16px;
+      gap: 0.75rem;
+      padding: 1rem;
       background: white;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      border-radius: .5rem;
+      margin-bottom: .5rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .todo-item:hover {
       transform: translateX(4px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
     }
 
     .checkbox {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       cursor: pointer;
     }
 
     .todo-text {
       flex: 1;
-      font-size: 16px;
+      font-size: 1rem;
       color: #333;
       word-break: break-word;
     }
@@ -51,24 +55,24 @@ export class TodoItem extends LitElement {
 
     .edit-input {
       flex: 1;
-      padding: 8px;
-      font-size: 16px;
+      padding: .5rem;
+      font-size: 1rem;
       border: 2px solid #667eea;
-      border-radius: 4px;
+      border-radius: 0.25rem;
       outline: none;
     }
 
     .button-group {
       display: flex;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
     button {
-      padding: 6px 12px;
+      padding: 0.375rem 0.75rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 0.25rem;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 0.875rem;
       transition: background 0.2s;
     }
 
@@ -115,6 +119,12 @@ export class TodoItem extends LitElement {
     this.editValue = '';
   }
 
+  /**
+   * Toggles the completion status of the todo.
+   * Dispatches `toggle-todo` event with the todo ID.
+   *
+   * @fires TodoItem#toggle-todo
+   */
   handleToggle() {
     this.dispatchEvent(new CustomEvent('toggle-todo', {
       detail: { id: this.todo.id },
@@ -123,6 +133,11 @@ export class TodoItem extends LitElement {
     }));
   }
 
+  /**
+   * Prompts user to confirm deletion, then dispatches `delete-todo`.
+   *
+   * @fires TodoItem#delete-todo
+   */
   handleDelete() {
     if (confirm('Delete this todo?')) {
       this.dispatchEvent(new CustomEvent('delete-todo', {
@@ -133,11 +148,20 @@ export class TodoItem extends LitElement {
     }
   }
 
+  /**
+   * Enters edit mode and initializes the input with current todo text.
+   */
   handleEdit() {
     this.isEditing = true;
     this.editValue = this.todo.text;
   }
 
+  /**
+   * Saves the edited text if non-empty and exits edit mode.
+   * Dispatches `update-todo` with new text.
+   *
+   * @fires TodoItem#update-todo
+   */
   handleSave() {
     if (this.editValue.trim()) {
       this.dispatchEvent(new CustomEvent('update-todo', {
@@ -149,11 +173,21 @@ export class TodoItem extends LitElement {
     }
   }
 
+  /**
+   * Cancels editing and discards changes.
+   */
   handleCancel() {
     this.isEditing = false;
     this.editValue = '';
   }
 
+  /**
+   * Handles keyboard shortcuts in edit mode.
+   * - Enter: Save
+   * - Escape: Cancel
+   *
+   * @param {KeyboardEvent} e
+   */
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       this.handleSave();
@@ -162,6 +196,11 @@ export class TodoItem extends LitElement {
     }
   }
 
+  /**
+   * Renders either the view or edit mode of the todo item.
+   *
+   * @returns {import('lit').TemplateResult}
+   */
   render() {
     if (this.isEditing) {
       return html`
