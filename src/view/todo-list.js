@@ -64,7 +64,6 @@ export class TodoList extends LitElement {
 
   /**
    * Renders the todo list or empty state.
-   * @returns {import('lit').TemplateResult}
    */
   render() {
     if (this.todos.length === 0) {

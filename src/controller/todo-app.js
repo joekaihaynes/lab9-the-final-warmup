@@ -120,18 +120,18 @@ export class TodoApp extends LitElement {
   `;
 
   constructor() {
-      super();
-      /** @private */
-      this.storageService = new StorageService();
-      /** @private */
-      this.model = new TodoModel(this.storageService);
-      /** @type {Array} Current list of todo items */
-      this.todos = this.model.todos;
+    super();
+    /** @private */
+    this.storageService = new StorageService();
+    /** @private */
+    this.model = new TodoModel(this.storageService);
+    /** @type {Array} */
+    this.todos = this.model.todos;
 
-      // Subscribe to model changes to trigger re-render
-      this.model.subscribe(() => {
-          this.todos = [...this.model.todos];
-      });
+    // Subscribe to model changes to trigger re-render
+    this.model.subscribe(() => {
+      this.todos = [...this.model.todos];
+    });
   }
 
 
@@ -187,7 +187,6 @@ export class TodoApp extends LitElement {
 
   /**
    * Renders the full application UI.
-   * @returns {import('lit').TemplateResult}
    * */
   render() {
     return html`

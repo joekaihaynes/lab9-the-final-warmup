@@ -101,8 +101,6 @@ export class TodoForm extends LitElement {
   /**
    * Renders the form with input and submit button.
    * Button is disabled when input is empty or whitespace.
-   *
-   * @returns {import('lit').TemplateResult}
    */
   render() {
     return html`

@@ -31,7 +31,6 @@ export class TodoItem extends LitElement {
     }
 
     .todo-item:hover {
-      transform: translateX(4px);
       box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
     }
 
@@ -198,8 +197,6 @@ export class TodoItem extends LitElement {
 
   /**
    * Renders either the view or edit mode of the todo item.
-   *
-   * @returns {import('lit').TemplateResult}
    */
   render() {
     if (this.isEditing) {
