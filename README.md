@@ -11,7 +11,7 @@ The app supports **CRUD operations**, **persistent storage**, and **due dates**,
 
 ## **Repository Structure**
 
-`
+```
 lab9-the-final-warmup/
 ├── src/
 │ ├── controller/
@@ -48,7 +48,7 @@ lab9-the-final-warmup/
 ├── vite.config.js
 ├── LICENSE
 └── README.md
-`
+```
 
 ## 🧱 Changes & Improvements
 
