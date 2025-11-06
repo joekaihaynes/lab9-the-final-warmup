@@ -3,6 +3,10 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   root: './src',
   base: './',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: true,
+  },
   test: {
     globals: true,
     environment: 'jsdom',
@@ -13,10 +17,6 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
       include: ['**/*.{js,ts}'],
-    },
-    build: {
-      outDir: '../dist',
-      emptyOutDir: true,
     },
   },
 });
