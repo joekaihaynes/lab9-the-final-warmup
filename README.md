@@ -10,6 +10,7 @@ The app supports **CRUD operations**, **persistent storage**, and **due dates**,
 ---
 
 ## **Repository Structure**
+
 `
 lab9-the-final-warmup/
 ├── src/
@@ -48,6 +49,7 @@ lab9-the-final-warmup/
 ├── LICENSE
 └── README.md
 `
+
 ## 🧱 Changes & Improvements
 
 ### 1. Repository Structure Overhaul
