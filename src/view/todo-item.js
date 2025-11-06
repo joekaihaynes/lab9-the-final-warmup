@@ -110,6 +110,12 @@ export class TodoItem extends LitElement {
     .cancel-btn:hover {
       background: #616161;
     }
+      
+    .due-date {
+      font-size: 0.75rem;
+      color: #ff5722;
+      margin-left: 0.5rem;
+    }
   `;
 
   constructor() {
@@ -230,6 +236,7 @@ export class TodoItem extends LitElement {
         <span class="todo-text ${this.todo.completed ? 'completed' : ''}">
           ${this.todo.text}
         </span>
+        ${this.todo.dueDate ? html`<span class="due-date">Due: ${this.todo.dueDate}</span>` : ''}
         <div class="button-group">
           <button
             class="edit-btn"

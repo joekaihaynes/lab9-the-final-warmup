@@ -140,7 +140,8 @@ export class TodoApp extends LitElement {
    * @param {CustomEvent} e - Event containing todo text in e.detail.text
    */
   handleAddTodo(e) {
-    this.model.addTodo(e.detail.text);
+    const{text, dueDate} = e.detail;
+    this.model.addTodo(e.detail.text, dueDate);
   }
 
   /**

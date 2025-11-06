@@ -11,7 +11,8 @@ import { LitElement, html, css } from 'lit';
  */
 export class TodoForm extends LitElement {
   static properties = {
-    inputValue: { state: true }
+    inputValue: { state: true },
+    dueDate: { state: true }
   };
 
   static styles = css`
@@ -64,6 +65,7 @@ export class TodoForm extends LitElement {
   constructor() {
     super();
     this.inputValue = '';
+    this.dueDate = '';
   }
 
   /**
@@ -80,7 +82,7 @@ export class TodoForm extends LitElement {
 
     if (text) {
       this.dispatchEvent(new CustomEvent('add-todo', {
-        detail: { text },
+        detail: { text, dueDate: this.dueDate },
         bubbles: true,
         composed: true
       }));
@@ -112,6 +114,11 @@ export class TodoForm extends LitElement {
           @input=${this.handleInput}
           aria-label="New todo"
           autofocus
+        />
+        <input
+          type="date"
+          .value=${this.dueDate}
+          @input=${(e) => this.dueDate = e.target.value}
         />
         <button type="submit" ?disabled=${!this.inputValue.trim()}>
           Add

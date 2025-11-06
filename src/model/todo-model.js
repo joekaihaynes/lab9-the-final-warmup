@@ -27,7 +27,7 @@ export class TodoModel {
   /**
    * Add a new todo
    */
-  addTodo(text) {
+  addTodo(text, dueDate = '') {
     if (!text || text.trim() === '') {
       return;
     }
@@ -35,6 +35,7 @@ export class TodoModel {
     const todo = {
       id: this.nextId++,
       text: text.trim(),
+      dueDate,
       completed: false,
       createdAt: new Date().toISOString()
     };
@@ -72,6 +73,7 @@ export class TodoModel {
     const todo = this.todos.find(t => t.id === id);
     if (todo && newText && newText.trim() !== '') {
       todo.text = newText.trim();
+      if(newDueDate) todo.dueDate = newDueDate;
       this.save();
       this.notify();
     }
