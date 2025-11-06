@@ -14,5 +14,9 @@ export default defineConfig({
       reporter: ['text', 'html', 'lcov'],
       include: ['**/*.{js,ts}'],
     },
+    build: {
+      outDir: '../dist',
+      emptyOutDir: true,
+    },
   },
 });
