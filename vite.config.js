@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: './src', // Dev server serves from src
+  root: './src',
+  base: './src',
   test: {
     globals: true,
     environment: 'jsdom',
