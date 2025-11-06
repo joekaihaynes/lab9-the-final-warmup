@@ -1,4 +1,6 @@
 # **Lab 9 – The Final Battle: Lit MVC Todo App + E2E + CI/CD**
+## Live Demo Link:
+https://f51c4f48.lab9-the-final-warmup.pages.dev/
 
 ## **Project Overview**
 
@@ -128,10 +130,7 @@ Before running the project, make sure you have:
 2. Deploy: npm run dev 
 3. Run Unit Tests: npm run test:unit
 4. Run E2E tests: npm run test:e2e
-5. if first time using: npx playwright install 
-
-## Live Demo Link:
-https://f51c4f48.lab9-the-final-warmup.pages.dev/
+5. if first time using: npx playwright install
 
 ## Author 
 -Joe Haynes 
