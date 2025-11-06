@@ -11,9 +11,7 @@
     "lint:fix": "eslint . --fix",
     "docs": "jsdoc -c jsdoc.conf.json ",
     "test:unit": "vitest",
-    "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed",
     "test:e2e:report": "playwright show-report"
   },
   "keywords": [
